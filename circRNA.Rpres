@@ -1,0 +1,57 @@
+<style>
+
+.midcenter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+</style>
+
+circRNA Detection
+========================================================
+author: lijiaping@genomics.cn
+date: 2015-09-22
+***
+[![cell cover](cell.cover.jpg)](http://dx.doi.org/10.1016/j.molcel.2012.07.033)
+
+What's circRNA
+========================================================
+<small>Circular RNA (or circRNA) is a type of RNA which, unlike the better known linear RNA, forms a covalently closed continuous loop, i.e., in circular RNA the 3' and 5' ends normally present in an RNA molecule have been joined together. This feature confers numerous properties to circular RNAs, many of which have only recently been identified.</small>
+
+Biological Function
+========================================================
+- miR sponge
+- Potential
+  - Binding to RNA-binding proteins (RBPs) to form RNA-protein complexes.
+  - Protein production
+  - miR transportion
+  - mRNA regulation
+
+circRNA Detection
+========================================================
+- find_circ
+  - [Circular RNAs are a large class of animal RNAs with regulatory potency](http://dx.doi.org/10.1038/nature11928)
+- CIRCexplorer
+  - [Complementary Sequence-Mediated Exon Circularization](http://dx.doi.org/10.1016/j.cell.2014.09.001)
+- CIRI
+  - [CIRI: an efficient and unbiased algorithm for de novo circular RNA identification](http://dx.doi.org/10.1186%2Fs13059-014-0571-3)
+
+
+find_circ
+========================================================
+
+```{r, echo=F}
+library(DiagrammeR)
+library(htmltools)
+html_print(mermaid("
+graph TD
+A --> B
+", height=200))
+```
+
+Slide With Plot
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```
