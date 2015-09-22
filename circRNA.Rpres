@@ -5,6 +5,10 @@
     top: 50%;
     left: 50%;
 }
+
+.reveal {
+    font-size: 1em;
+}
 </style>
 
 circRNA Detection
@@ -16,7 +20,10 @@ date: 2015-09-22
 
 What's circRNA
 ========================================================
-<small>Circular RNA (or circRNA) is a type of RNA which, unlike the better known linear RNA, forms a covalently closed continuous loop, i.e., in circular RNA the 3' and 5' ends normally present in an RNA molecule have been joined together. This feature confers numerous properties to circular RNAs, many of which have only recently been identified.</small>
+Circular RNA (or circRNA) is a type of RNA which, unlike the better known linear RNA, forms a covalently closed continuous loop, i.e., in circular RNA the 3' and 5' ends normally present in an RNA molecule have been joined together. This feature confers numerous properties to circular RNAs, many of which have only recently been identified.
+
+![a](find_circ.a.jpg)
+
 
 Biological Function
 ========================================================
@@ -39,19 +46,12 @@ circRNA Detection
 
 find_circ
 ========================================================
-
-```{r, echo=F}
-library(DiagrammeR)
-library(htmltools)
-html_print(mermaid("
-graph TD
-A --> B
-", height=200))
-```
-
-Slide With Plot
-========================================================
-
-```{r, echo=FALSE}
-plot(cars)
-```
+![flow](find_circ.flow.png)
+***
+1. GU/AG flanking the splice sites; 
+2. unambiguous breakpoint;
+3. a maximum of two mismatches in the extension procedure; 
+4. breakpoint reside no more than 2 nucleotides inside an anchor;
+5. at least two independent reads support the junction;
+6. unique anchor alignments with a safety margin to the next-best alignment of at least one anchor above 35 points;
+7. two splice sites no more than 100 kb
