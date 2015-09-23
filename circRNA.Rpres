@@ -7,7 +7,7 @@
 }
 
 .reveal {
-    font-size: 1em;
+    font-size: 28px;
 }
 </style>
 
@@ -55,3 +55,38 @@ find_circ
 5. at least two independent reads support the junction;
 6. unique anchor alignments with a safety margin to the next-best alignment of at least one anchor above 35 points;
 7. two splice sites no more than 100 kb
+
+CIRCexplorer
+========================================================
+![CIRCexplorer.flow](CIRCexplorer.flow.jpg)
+****
+1. candidate back-spliced junction reads: unmapped with TopHat but mapped with TopHat-Fusion on the same chromosome in a noncolinear ordering.
+2. realigned against gene annotation to determine the precise positions of downstream donor and upstream acceptor splice sites, respectively.
+3. exonic circular RNAs were annotated with the support of identified junction
+reads
+
+
+Orientation-Opposite Alu Elements
+========================================================
+- On average, there were about three Alu elements in both upstream and downstream flanking introns of circularized exons.
+- Alu elements that could form IRAlus, either convergent (G) or divergent (H)
+- IRAlus pairing might bring a splice donor site at a downstream exon and a splice acceptor site at an upstream exon close to each other and promote back splicing.
+
+![orientation-opposite.Alu.elements](orientation-opposite.Alu.elements.png)
+
+Alternative Circularization
+========================================================
+
+![Alternative Circularization](Alternative.Circularization.png)
+
+Circular RNAs with their back-spliced junction reads (numbers) from H9 poly(A)-/RNase R RNA-seq were indicated by arc lines. Different shades of black colors indicated different number of junction reads.
+
+![Orientation_Opposite.Alu.Elements](Orientation_Opposite.Alu.Elements.png)
+
+Competition of RNA Pairing Affects Exon Circularization
+========================================================
+The competition models of RNA pairing by complementary sequence-mediated exon circularization. 
+- (Left) The RNA pairing by IRAlus within one individual intron promotes **normal constitutive splicing** , resulting in a linearized RNA transcript with exon inclusion and no circularization.
+- (Right) RNA pairing by IRAlus across flanking introns promotes **back splicing**, leading to a linearized RNA transcript with exon skipping and circularization.
+
+![circRNA.competition.model](circRNA.competition.model.png)
