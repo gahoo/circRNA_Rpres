@@ -90,3 +90,14 @@ The competition models of RNA pairing by complementary sequence-mediated exon ci
 - (Right) RNA pairing by IRAlus across flanking introns promotes **back splicing**, leading to a linearized RNA transcript with exon skipping and circularization.
 
 ![circRNA.competition.model](circRNA.competition.model.png)
+
+CIRI
+========================================================
+
+
+Challenges
+========================================================
+1. a large proportion of circRNAs have relatively **low abundance** compared with their linear counterparts [10],[15], while most RNA-seq data were generated **without a circRNA enrichment step**, such as *RNase R treatment*, which makes it difficult to accurately distinguish circRNAs from false positives caused by noise in RNA-seq data;
+2. existing **annotations** of reference genomes were mainly **based on linear RNA transcript analyses**, which is not applicable for circRNA identification, and non-model organisms often have incomplete gene annotation or even **lack gene annotation**;
+3. **read lengths vary** in different sequencing data sets, which challenges unbiased identification of circRNAs; 
+4. complexities of eukaryotic transcription may generate other non-canonical transcripts, such as **lariats and fusion genes**, in which corresponding reads similar to circular junctions may **lead to false discoveries**. 
