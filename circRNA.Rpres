@@ -15,8 +15,9 @@ circRNA Detection
 ========================================================
 author: lijiaping@genomics.cn
 date: 2015-09-22
-<a href="https://github.com/gahoo/circRNA_Rpres"  style="position:absolute; bottom:0;">
-<img alt="barcode" src="barcode.png"></img>
+<a href="https://github.com/gahoo/circRNA_Rpres" style="position:absolute; bottom:0;" align="right">
+<img alt="barcode" src="barcode.png" align="right"></img>
+<br>
 Souce Code
 </a>
 ***
@@ -52,7 +53,7 @@ circRNA Detection
 
 find_circ
 ========================================================
-![flow](find_circ.flow.png)
+<img src="find_circ.flow.png" width="50%" height="50%" align="right"></img>
 ***
 1. GU/AG flanking the splice sites; 
 2. unambiguous breakpoint;
@@ -67,7 +68,7 @@ find_circ
 
 CIRCexplorer
 ========================================================
-![CIRCexplorer.flow](CIRCexplorer.flow.jpg)
+<img src="CIRCexplorer.flow.jpg" width="80%" align="right"></img>
 ****
 1. candidate back-spliced junction reads: unmapped with TopHat but mapped with TopHat-Fusion on the same chromosome in a noncolinear ordering.
 2. realigned against gene annotation to determine the precise positions of downstream donor and upstream acceptor splice sites, respectively.
