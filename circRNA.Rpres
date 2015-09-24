@@ -15,7 +15,10 @@ circRNA Detection
 ========================================================
 author: lijiaping@genomics.cn
 date: 2015-09-22
-<img alt="barcode" src="" style="position:absolute; bottom:0;"></img>
+<a href="https://github.com/gahoo/circRNA_Rpres"  style="position:absolute; bottom:0;">
+<img alt="barcode" src="barcode.png"></img>
+Souce Code
+</a>
 ***
 [![cell cover](cell.cover.jpg)](http://dx.doi.org/10.1016/j.molcel.2012.07.033)
 
@@ -44,6 +47,8 @@ circRNA Detection
 - CIRI
   - [CIRI: an efficient and unbiased algorithm for de novo circular RNA identification](http://dx.doi.org/10.1186%2Fs13059-014-0571-3)
 
+========================================================
+<div class="midcenter" style="font-size: 4em;">find_circ</div>
 
 find_circ
 ========================================================
@@ -56,6 +61,9 @@ find_circ
 5. at least two independent reads support the junction;
 6. unique anchor alignments with a safety margin to the next-best alignment of at least one anchor above 35 points;
 7. two splice sites no more than 100 kb
+
+========================================================
+<div class="midcenter" style="font-size: 4em;">CIRCexplorer</div>
 
 CIRCexplorer
 ========================================================
@@ -92,13 +100,13 @@ The competition models of RNA pairing by complementary sequence-mediated exon ci
 
 ![circRNA.competition.model](circRNA.competition.model.png)
 
-CIRI
-========================================================
 
+========================================================
+<div class="midcenter" style="font-size: 4em;">CIRI</div>
 
 Challenges
 ========================================================
-1. a large proportion of circRNAs have relatively **low abundance** compared with their linear counterparts [10],[15], while most RNA-seq data were generated **without a circRNA enrichment step**, such as *RNase R treatment*, which makes it difficult to accurately distinguish circRNAs from false positives caused by noise in RNA-seq data;
+1. a large proportion of circRNAs have relatively **low abundance** compared with their linear counterparts, while most RNA-seq data were generated **without a circRNA enrichment step**, such as *RNase R treatment*, which makes it difficult to accurately distinguish circRNAs from false positives caused by noise in RNA-seq data;
 2. existing **annotations** of reference genomes were mainly **based on linear RNA transcript analyses**, which is not applicable for circRNA identification, and non-model organisms often have incomplete gene annotation or even **lack gene annotation**;
 3. **read lengths vary** in different sequencing data sets, which challenges unbiased identification of circRNAs; 
 4. complexities of eukaryotic transcription may generate other non-canonical transcripts, such as **lariats and fusion genes**, in which corresponding reads similar to circular junctions may **lead to false discoveries**. 
@@ -141,7 +149,7 @@ What's CIGAR | clipped alignment
 ========================================================
 From [datatang.org](http://davetang.org/wiki/tiki-index.php?page=SAM#Clipped_alignment)
 
-a sequence may *not be aligned from the first residue to the last one*. Subsequences at the ends may be clipped off. We introduce operation 'S' to describe **clipped alignment**. One query sequence may be aligned to **multiple places** on the reference genome, either with or without overlaps. In SAM, we keep multiple hits as multiple alignment records. To avoid presenting the full query sequence multiple times for non-overlapping hits, we introduce operation 'H' to describe **hard clipped alignment**.
+a sequence may *not be aligned from the first residue to the last one*. Subsequences at the ends may be clipped off. We introduce operation **'S'** to describe **clipped alignment**. One query sequence may be aligned to **multiple places** on the reference genome, either with or without overlaps. In SAM, we keep multiple hits as multiple alignment records. To avoid presenting the full query sequence multiple times for non-overlapping hits, we introduce operation **'H'** to describe **hard clipped alignment**.
 
 clipped alignment:
 ```
@@ -166,5 +174,33 @@ PEM(paired-end mapping) signal
 <img src="CIRI.types.gif" width="100%"></img>
 - D. paired-end mapping (PEM)
   - **PEM signals** - paired read of a junction read align within inferred circRNA area;
-  - **GT-AG splicing signals** in junctions;
-  - mapping statistics - mapping **quantity** and **quality**, and mapping **read length** in junctions.
+  - **GT-AG or AT-AC splicing signals** in junctions;
+  - mapping **quantity** and **quality**, and mapping **read length** in junctions.
+
+CIRI | pipeline
+========================================================
+The CIRI pipeline for detecting circRNAs from transcriptome data. (DP: dynamic programming). 
+
+<img src="CIRI.flow.gif" width="80%"></img>
+
+CIRI | second scan
+========================================================
+CIRI scans SAM alignment for the second time and makes a thorough investigation of **each read**. 
+
+Information such as **CIGAR value**, **mapping position** and **mapping quality** of a read and **its paired read** is taken into account. 
+
+Any **read mapping to the related region** of a putative circRNA junction in the SAM alignment is aligned with related junction reads identified in the first scan using a **dynamic programming algorithm** to decide whether the former supports the junction of a **circRNA** or corresponding **linear transcript**.
+
+CIRI | multiple mapping filtration
+========================================================
+This step also facilitates a further filter to **prevent false predictions** resulting from similarity of **homologous genes** or **repetitive sequences**
+
+- record similar or identical reads with **distinct mapping position** to junction reads
+- summarizes **mapping positions of all related reads** of a candidate junction
+- compares **counts** and **mapping** lengths of the reads
+- whether the reads reliably reflect a circRNA junction?
+- whether the candidate circRNA will be kept?
+- minimum of relative expression(counting junction and **non-**junction reads)
+
+========================================================
+<div class="midcenter" style="font-size: 4em;">End</div>
