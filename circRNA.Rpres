@@ -15,6 +15,7 @@ circRNA Detection
 ========================================================
 author: lijiaping@genomics.cn
 date: 2015-09-22
+<img alt="barcode" src="" style="position:absolute; bottom:0;"></img>
 ***
 [![cell cover](cell.cover.jpg)](http://dx.doi.org/10.1016/j.molcel.2012.07.033)
 
@@ -101,3 +102,69 @@ Challenges
 2. existing **annotations** of reference genomes were mainly **based on linear RNA transcript analyses**, which is not applicable for circRNA identification, and non-model organisms often have incomplete gene annotation or even **lack gene annotation**;
 3. **read lengths vary** in different sequencing data sets, which challenges unbiased identification of circRNAs; 
 4. complexities of eukaryotic transcription may generate other non-canonical transcripts, such as **lariats and fusion genes**, in which corresponding reads similar to circular junctions may **lead to false discoveries**. 
+
+Related works
+========================================================
+- Salzman [*Cell-type specific features of circular RNA expression*](http://www.genomebiology.com/pubmed/23446346)
+  - alignment to customized **annotated exon boundaries**
+  - filtration not effective on **low coverage regions**
+- Memczak [*Circular RNAs are a large class of animal RNAs with regulatory potency*](http://www.genomebiology.com/pubmed/23446348) (find_circ)
+  - utilized **GT-AG splicing signals** flanking exons
+  - adopt a **two-segment alignment** of split reads
+  - **inability to detect short exon-flanking circRNAs**
+  - filtration insufficient for removal of **false positives**
+- Jeck [*Circular RNAs are abundant, conserved, and associated with ALU repeats*](http://www.genomebiology.com/pubmed/22319583)
+  - **compares untreated and RNase-treated** results to **confirm** circRNA candidates and **remove false positives**.
+  - sensitive and able to estimate circRNAs **relative abundance**
+  - **introduce systematic bias** in the enrichment procedure
+  - not applicable to RNA-seq data without circRNA enrichment
+
+What's CIGAR
+========================================================
+From [wiki](http://genome.sph.umich.edu/wiki/SAM#What_is_a_CIGAR.3F)
+
+The CIGAR string is a sequence of of base lengths and the associated operation.
+
+For example: 
+```
+RefPos:     1  2  3  4  5  6  7     8  9 10 11 12 13 14 15
+Reference:  T  A  C  T     G  A  A  C  T  G  A  C  T  A  A
+Read:          A  C  T  A  G  A  A     T  G  G  C  T
+```
+With the alignment above, you get:
+```
+POS: 2
+CIGAR: 3M1I3M1D5M
+```
+
+What's CIGAR | clipped alignment
+========================================================
+From [datatang.org](http://davetang.org/wiki/tiki-index.php?page=SAM#Clipped_alignment)
+
+a sequence may *not be aligned from the first residue to the last one*. Subsequences at the ends may be clipped off. We introduce operation 'S' to describe **clipped alignment**. One query sequence may be aligned to **multiple places** on the reference genome, either with or without overlaps. In SAM, we keep multiple hits as multiple alignment records. To avoid presenting the full query sequence multiple times for non-overlapping hits, we introduce operation 'H' to describe **hard clipped alignment**.
+
+clipped alignment:
+```
+REF: AGCTAGCATCGTGTCGCCCGTCTAGCATACGCATGATCGACTGTC
+READ:         gggGTGTAACC-GACTAGgggg
+CIGAR: 3S8M1D6M4S
+CIGAR: 3H8M1D6M4H (multi-part alignment)
+sequence stored: GGGGTGTAACCGACTAGGGGG
+sequence stored:    GTGTAACCGACTAG  (multi-part alignment)
+```
+
+PCC(paired chiastic clipping) signal
+========================================================
+<img src="CIRI.types.gif" width="100%"></img>
+- A. typical circRNA: xS/HyM or xMyS/H
+- B. short-exon flanking circRNA: (x+y)S/HzM or xM(y+z)S/H
+- C. small circRNA: xS/HyMzS/H
+- D. paired-end mapping (PEM)
+
+PEM(paired-end mapping) signal
+========================================================
+<img src="CIRI.types.gif" width="100%"></img>
+- D. paired-end mapping (PEM)
+  - **PEM signals** - paired read of a junction read align within inferred circRNA area;
+  - **GT-AG splicing signals** in junctions;
+  - mapping statistics - mapping **quantity** and **quality**, and mapping **read length** in junctions.
