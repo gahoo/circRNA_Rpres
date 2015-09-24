@@ -101,6 +101,15 @@ The competition models of RNA pairing by complementary sequence-mediated exon ci
 
 ![circRNA.competition.model](circRNA.competition.model.png)
 
+circRNA biogenesis
+========================================================
+[*Analysis of Intron Sequences Reveals Hallmarks of Circular RNA Biogenesis in Animals*](http://dx.doi.org/10.1016/j.celrep.2014.12.019)
+- Reverse complementary matches are a conserved feature of circRNA biogenesis
+- Computational analysis of intron sequences allows successful prediction of circRNAs
+- The circRNA formation mechanism depends on the RNA-editing enzyme ADAR
+
+***
+![enzyme.ADAR](enzyme.ADAR.jpg)
 
 ========================================================
 <div class="midcenter" style="font-size: 4em;">CIRI</div>
