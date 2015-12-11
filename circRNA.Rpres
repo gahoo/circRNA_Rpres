@@ -14,14 +14,14 @@
 circRNA Detection
 ========================================================
 author: lijiaping@genomics.cn
-date: 2015-09-22
+date: 2015-12-11
 <a href="https://github.com/gahoo/circRNA_Rpres" style="position:absolute; bottom:0;" align="middle">
 <img alt="barcode" src="barcode.png" align="middle"></img>
 <br>
 Souce Code
 </a>
 ***
-[![cell cover](cell.cover.jpg)](http://dx.doi.org/10.1016/j.molcel.2012.07.033)
+<img alt="cover" src="cover.jpg" align="bottom"></img>
 
 What's circRNA
 ========================================================
@@ -39,6 +39,16 @@ Biological Function
   - Protein production
   - miR transportion
   - mRNA regulation
+
+Biological Function
+========================================================
+<img src="ElciRNAs-model.png" width="100%"></img>
+
+EIciRNAs might hold factors such as U1 snRNP through specific RNA-RNA interaction between U1 snRNA and EIciRNA, and then the EIciRNA-U1 snRNP complexes might further interact with the Pol II transcription complex at the promoters of parental genes to enhance gene expression.
+
+<small>
+Li Z, Huang C, Bao C, et al. Exon-intron circular RNAs regulate transcription in the nucleus[J]. Nature structural & molecular biology, 2015, 22(3): 256-264.
+</small>
 
 circRNA Detection
 ========================================================
